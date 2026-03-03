@@ -1,12 +1,12 @@
-# Cronoclase
+# [Nombre Oficial del Proyecto]
 
-Plataforma para la gestión visual de hitos académicos y seguimientos dinámico del progreso semestral.
+[Una frase corta que resuma el propósito – máximo 15 palabras]
 
 ## Introducción / Contexto
 
 - **Descripción del problema:** La desarticulación entre el pacto pedagógico y el seguimiento diario genera confusión en los estudiantes sobre los plazos y una carga administrativa excesiva para los docentes al gestionar entregas.
 - **Justificación:** Es relevante porque centraliza la planificación educativa en una herramienta visual, mejorando la organización del tiempo, reduciendo el incumplimiento de entregas y permitiendo un control transparente del avance académico.
-- **Dominio:** Gestión de procesos educativos y seguimiento de cronogramas academicoss.
+- **Dominio:** Gestión de procesos educativos y seguimiento de cronogramas académicos.
 
 ## Objetivos
 
@@ -51,48 +51,41 @@ Plataforma para la gestión visual de hitos académicos y seguimientos dinámico
 
 El diagrama de dominio muestra las entidades principales del sistema (por ejemplo, Usuario, Docente, Estudiante, Actividad, Hito, Entrega) y las relaciones entre ellas. Es una vista conceptual que ayuda a entender el modelo antes de entrar a la implementacion tecnica.
 
-![Diagrama de Dominio v1](docs/diagrama-dominio-v1.png) 
-*Diagrama inicial del modelo de dominio – versión 1. Se actualizará en futuras entregas.*
 
-## Instrucciones de Instalación y Ejecución
+## Instrucciones de Instalación y Ejecución (para desarrolladores)
 
-### Requisitos Previos
-- Asegúrate de tener instalado Java 17 o superior.
-- Instala Maven si no está incluido en tu entorno.
-- Configura una base de datos compatible (H2 o PostgreSQL).
-
-### Pasos para la Instalación
-1. Clona este repositorio en tu máquina local:
+1. Clonar el repositorio
    ```bash
-   git clone [https://github.com/irwincol/cronoclase-grupo-5.git]
+   git clone https://github.com/[usuario-lider]/[nombre-repo].git
    ```
-2. Navega al directorio del proyecto:
+2. Navegar al directorio del proyecto:
    ```bash
-   cd cronoclase-grupo-5
+   cd [nombre-repo]
    ```
 
 ### Configuración de la Base de Datos
+
 - **H2 (Base de datos en memoria para desarrollo):**
-  Crea un archivo `application-dev.properties` en el directorio `src/main/resources/` con el siguiente contenido:
   ```properties
   spring.datasource.url=jdbc:h2:mem:testdb
   spring.datasource.driverClassName=org.h2.Driver
   spring.datasource.username=sa
-  spring.datasource.password=password
+  spring.datasource.password=
   spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+  spring.h2.console.enabled=true
+  spring.jpa.hibernate.ddl-auto=update
   ```
 
 - **PostgreSQL (Base de datos para producción):**
-  Crea un archivo `application-dev.properties` en el directorio `src/main/resources/` con el siguiente contenido:
   ```properties
-  spring.datasource.url=jdbc:postgresql://localhost:5432/cronoclase
-  spring.datasource.driverClassName=org.postgresql.Driver
-  spring.datasource.username=postgres
-  spring.datasource.password=tu-contraseña
-  spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+  spring.datasource.url=jdbc:postgresql://localhost:5432/[nombre_bd]
+  spring.datasource.username=[usuario]
+  spring.datasource.password=[contraseña]
+  spring.jpa.hibernate.ddl-auto=update
   ```
 
 ### Ejecución de la Aplicación
+
 - Desde la línea de comandos:
   ```bash
   ./mvnw spring-boot:run
