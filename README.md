@@ -1,6 +1,6 @@
 # Cronoclase
 
-Plataforma interactiva para la gestión visual de hitos académicos y seguimientos dinámico del progreso semestral.
+Plataforma para la gestión visual de hitos académicos y seguimientos dinámico del progreso semestral.
 
 ## Introducción / Contexto
 
@@ -54,8 +54,53 @@ El diagrama de dominio muestra las entidades principales del sistema (por ejempl
 ![Diagrama de Dominio v1](docs/diagrama-dominio-v1.png) 
 *Diagrama inicial del modelo de dominio – versión 1. Se actualizará en futuras entregas.*
 
-## Instrucciones de Instalación y Ejecución (para desarrolladores)
+## Instrucciones de Instalación y Ejecución
 
-1. **Clonar el repositorio**
+### Requisitos Previos
+- Asegúrate de tener instalado Java 17 o superior.
+- Instala Maven si no está incluido en tu entorno.
+- Configura una base de datos compatible (H2 o PostgreSQL).
+
+### Pasos para la Instalación
+1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone https://github.com/irwincol/cronoclase-grupo-5.git
+   git clone [URL-del-repositorio]
+   ```
+2. Navega al directorio del proyecto:
+   ```bash
+   cd cronoclase-grupo-5
+   ```
+
+### Configuración de la Base de Datos
+- **H2 (Base de datos en memoria para desarrollo):**
+  Crea un archivo `application-dev.properties` en el directorio `src/main/resources/` con el siguiente contenido:
+  ```properties
+  spring.datasource.url=jdbc:h2:mem:testdb
+  spring.datasource.driverClassName=org.h2.Driver
+  spring.datasource.username=sa
+  spring.datasource.password=password
+  spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+  ```
+
+- **PostgreSQL (Base de datos para producción):**
+  Crea un archivo `application-dev.properties` en el directorio `src/main/resources/` con el siguiente contenido:
+  ```properties
+  spring.datasource.url=jdbc:postgresql://localhost:5432/cronoclase
+  spring.datasource.driverClassName=org.postgresql.Driver
+  spring.datasource.username=postgres
+  spring.datasource.password=tu-contraseña
+  spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+  ```
+
+### Ejecución de la Aplicación
+- Desde la línea de comandos:
+  ```bash
+  ./mvnw spring-boot:run
+  ```
+- Desde un IDE:
+  1. Importa el proyecto como un proyecto Maven.
+  2. Ejecuta la clase `CronoclaseGrupo5Application` como una aplicación Java.
+
+### Notas Adicionales
+- Asegúrate de que el puerto configurado en `application.properties` no esté en uso.
+- Para cambiar el perfil de ejecución, utiliza la variable de entorno `SPRING_PROFILES_ACTIVE` (por ejemplo, `dev` o `prod`).
